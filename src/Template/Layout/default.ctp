@@ -59,6 +59,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <form class="form-inline my-2 my-lg-0">
                 <?php if (isset($user)): ?>
                     <?= $this->html->link($user['email'], '/users'); ?>&nbsp;
+                    <?php if ($user['admin']): ?>
+                    <?= $this->Html->link('Pool admin', '/admin', ['class' => 'btn btn-danger']); ?>&nbsp;
+                    <?php endif; ?>
                     <?= $this->Html->link('Log out', '/users/logout', ['class' => 'btn btn-primary']); ?>
                 <?php else: ?>
                     <?= $this->Html->link('Log in', '/users/login', ['class' => 'btn btn-primary']); ?>&nbsp;<?= $this->Html->link('Register', '/users/add', ['class' => 'btn btn-primary']); ?>
