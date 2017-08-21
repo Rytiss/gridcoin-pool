@@ -7,6 +7,11 @@ use App\Controller\AppController;
  * Rpc Controller
  */
 class RpcController extends AppController {
+    public function beforeFilter(\Cake\Event\Event $event) {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['getProjectConfig', 'index']);
+    }
+    
     /**
      * Attach/configuration RPC
      */

@@ -9,7 +9,7 @@
         <url_signature>
 <?= $project['url_signature']; ?>
         </url_signature>
-        <authenticator></authenticator>
+        <authenticator><?= $project['authenticator']; ?></authenticator>
     </account>
     <?php endforeach; ?>
 </acct_mgr_reply>
