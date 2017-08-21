@@ -35,3 +35,5 @@ nbproject/* # NetBeans
 
 # TecPool specific files
 composer.lock
+keys/private
+keys/public
