@@ -28,5 +28,14 @@ class RpcController extends AppController {
 
         $this->set('poolName', \Cake\Core\Configure::read('PoolName', 'GRC Pool'));
         $this->set('publicKey', file_get_contents('../keys/public'));
+        
+        $this->loadModel('Projects');
+        $projects = $this->Projects->find('all', [
+            'conditions' => [
+                'active' => true,
+                'authenticator IS NOT' => null,
+            ],
+        ]);
+        $this->set('projects', $projects);
     }
 }
