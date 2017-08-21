@@ -21,6 +21,23 @@ class AdminController extends AppController {
         $this->set('projects', $this->Projects->find('all', ['order' => 'name']));
         
         $daemonRunning = false;
+        $info = [];
+        exec('gridcoinresearchd -rpcuser=rpcuser -rpcpassword=rpcpassword getinfo 2>&1', $info, $retval);
+        if ($retval === 0) {
+            $daemonRunning = true;
+            
+            $status = json_decode(implode('', $info));
+            $this->set('daemonStatus', $status);
+            
+            $info = [];
+            exec('gridcoinresearchd -rpcuser=rpcuser -rpcpassword=rpcpassword getmininginfo 2>&1', $info, $retval);
+            $miningInfo = json_decode(implode('', $info));
+            $this->set('daemonMiningInfo', $miningInfo);
+            
+            $info = [];
+            exec('gridcoinresearchd -rpcuser=rpcuser -rpcpassword=rpcpassword getbalance 2>&1', $info, $retval);
+            $this->set('daemonBalance', $info[0]);
+        }
         $this->set('daemonRunning', $daemonRunning);
     }
 
