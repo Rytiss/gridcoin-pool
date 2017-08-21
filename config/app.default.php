@@ -344,4 +344,9 @@ return [
     'Session' => [
         'defaults' => 'php',
     ],
+    
+    /**
+     * Pool specific configuration
+     */
+    'PoolName' => 'GRC Pool',
 ];
