@@ -37,7 +37,6 @@ class RpcController extends AppController {
         $this->loadModel('Projects');
         $projects = $this->Projects->find('all', [
             'conditions' => [
-                'active' => true,
                 'authenticator IS NOT' => null,
             ],
         ]);

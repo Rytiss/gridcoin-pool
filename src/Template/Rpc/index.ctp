@@ -10,6 +10,7 @@
 <?= $project['url_signature']; ?>
         </url_signature>
         <authenticator><?= $project['authenticator']; ?></authenticator>
+        <dont_request_more_work><?= ($project['active'] ? '0' : '1'); ?></dont_request_more_work>
     </account>
     <?php endforeach; ?>
 </acct_mgr_reply>
