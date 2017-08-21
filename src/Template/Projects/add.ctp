@@ -7,6 +7,7 @@
             echo $this->Form->control('url');
             echo $this->Form->control('url_signature');
             echo $this->Form->control('active');
+            echo $this->Form->control('authenticator');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
