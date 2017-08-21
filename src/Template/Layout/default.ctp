@@ -21,37 +21,59 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
+        <?= $this->fetch('title') ?> - <?= \Cake\Core\Configure::read('PoolName', 'GRC Pool'); ?>
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css'); ?>
+    <?= $this->Html->css('main.css'); ?>
+    <?= $this->Html->script('https://code.jquery.com/jquery-3.2.1.slim.min.js'); ?>
+    <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'); ?>
+    <?= $this->Html->script('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js'); ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="/"><?= \Cake\Core\Configure::read('PoolName', 'GRC Pool'); ?></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
         </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>
-            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <?php if (isset($user)): ?>
+                    <?= $this->html->link($user['email'], '/users'); ?>&nbsp;
+                    <?= $this->Html->link('Log out', '/users/logout', ['class' => 'btn btn-primary']); ?>
+                <?php else: ?>
+                    <?= $this->Html->link('Log in', '/users/login', ['class' => 'btn btn-primary']); ?>&nbsp;<?= $this->Html->link('Register', '/users/add', ['class' => 'btn btn-primary']); ?>
+                <?php endif; ?>
+            </form>
         </div>
     </nav>
-    <?= $this->Flash->render() ?>
-    <div class="container clearfix">
+
+    <div class="container" id="content">
+        <?= $this->Flash->render() ?>
         <?= $this->fetch('content') ?>
-    </div>
-    <footer>
-    </footer>
+
+        <footer>
+            <p>&copy; 2017</p>
+        </footer>
+    </div> <!-- /container -->
 </body>
 </html>
