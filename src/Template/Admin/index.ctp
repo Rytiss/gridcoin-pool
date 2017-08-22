@@ -1,5 +1,6 @@
+<div class="container">
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col">
         <?= $this->Html->link('Add project', '/projects/add', ['class' => 'btn btn-sm btn-primary float-right']); ?>
         <h2>
             Projects
@@ -20,9 +21,12 @@
             </tr>
         <?php endforeach; ?>
         </table>
+        
+        <h2>Statistics and payouts</h2>
+        <?= $this->Html->link('Update statistics', '/admin/update-host-stats', ['class' => 'btn btn-sm btn-primary float-right']); ?>
     </div>
     
-    <div class="col-sm-6">
+    <div class="col">
         <h2>Gridcoin daemon</h2>
         <?php if ($daemonRunning === false): ?>
         <div class="badge badge-danger">DAEMON NOT RUNNING</div>
@@ -51,4 +55,5 @@
         </small></div>
         <?php endif; ?>
     </div>
+</div>
 </div>
