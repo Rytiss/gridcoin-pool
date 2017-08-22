@@ -1,4 +1,7 @@
 <acct_mgr_reply>
+    <?php if ($error): ?>
+    <error_msg><?= $error; ?></error_msg>
+    <?php endif; ?>
     <name><?= h($poolName); ?></name>
     <signing_key>
 <?= $publicKey; ?>
